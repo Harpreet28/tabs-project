@@ -1,0 +1,143 @@
+
+//
+// Variables
+// ---------
+
+$color-primary: #333;
+
+//
+// Base Styles
+// -----------
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+:root {
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.45;
+
+  // Center the demo
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+//
+// Tab Styles
+// ----------
+
+[data-tab-component] {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 960px;
+  position: relative;
+
+  // Tab navigation
+  [role="tablist"] {
+    margin-bottom: 0;
+    padding-left: 0;
+
+    @media (min-width: 568px) {
+      display: flex;
+    }
+  }
+
+  // Tab navigation items
+  [role="presentation"] {
+    flex: 1;
+    list-style-type: none;
+  }
+
+  // Tab navigation links
+  [role="tab"] {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid;
+    border-bottom-color: #d3d3d3;
+    color: #18a0fb;
+    cursor: pointer;
+    font-size: 1rem;
+    height: 100%;
+    justify-content: center;
+    padding: 20px 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 150ms;
+    width: 100%;
+
+    &:hover {
+      background-color: lighten($color-primary, 75%);
+      color: $color-primary;
+    }
+
+    // Modifiers
+    &[aria-selected="true"] {
+      background-color: #fff;
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+
+    @media only screen and (max-width: 600px) {
+      border-bottom: none;
+      border-left: solid;
+      border-left-color: #d3d3d3;
+      align-items: left;
+      text-align: left;
+
+      &[aria-selected="true"] {
+        border-left-color: $color-primary;
+      }
+    }
+  }
+
+  // Tab panels
+  [role="tabpanel"] {
+    background-color: #fff;
+    padding: 30px;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  .flex-container {
+    display: flex;
+  }
+
+  figure {
+    text-align: center;
+  }
+
+  img {
+    width: 400px;
+    height: 300px;
+  }
+
+  h3 {
+    color: #18a0fb;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+    .flex-container p {
+      order: 2;
+    }
+
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
